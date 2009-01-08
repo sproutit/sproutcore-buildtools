@@ -1,3 +1,7 @@
+== 0.9.21
+
+* Disabled platform name in URLs.  We will be using a different approach in the next version of the build tools, so this will avoid incompatible URLs from being published.  You can still technically build with platforms, but that should be avoided.
+
 * Added support for using build numbers in URL strings instead of query string parameters.  This will make caches flush more reliably.
 
 * Added support for building multiple platforms.  This is to be used with mobile platforms.
