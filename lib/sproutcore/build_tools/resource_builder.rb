@@ -57,7 +57,14 @@ module SproutCore
       # the data (such as minifcation and comment stripping)
       def join(lines)
         if bundle.minify?
-          SproutCore::CSSPacker.new.compress(lines.join)
+          options = {
+            :preserveComments => false,
+            :preserveNewlines => false,
+            :preserveSpaces => true,
+            :preserveColors => false,
+            :skipMisc => false
+          }
+          SproutCore::CSSPacker.new.compress(lines.join, options)
         else
           lines.join
         end
