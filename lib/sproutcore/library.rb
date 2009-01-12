@@ -376,7 +376,7 @@ module SproutCore
     def initialize(rp, opts = {}, next_lib = nil)
       @root_path = rp
       @next_library = next_lib
-      @load_opts = opts
+      @load_opts = opts.dup
       @proxies = {}
       load_environment!(opts)
     end
@@ -401,7 +401,7 @@ module SproutCore
           env[:build_number] = build_number
         end
       end
-
+      
       (@environment[:all] ||= {}).merge!(@load_opts)
 
     end
