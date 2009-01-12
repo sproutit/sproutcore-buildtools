@@ -560,7 +560,16 @@ module SproutCore
       SC.logger.debug("~ Source Root: #{source_root}")
       SC.logger.debug("~ Build Root:  #{build_root}")
 
-      languages.uniq.each { |lang| build_language(lang, platform) }
+      languages.uniq.each do |lang| 
+        build_language(lang, platform)
+        
+        # Copy the index.html file up one level as well...
+        if index_entry = entry_for('index.html', :language => lang)
+          dir = File.dirname File.dirname(index_entry.build_path) # lang dir
+          FileUtils.mkdir_p(dir)
+          FileUtils.cp_r(index_entry.build_path, File.join(dir,'index.html'))
+        end
+      end
 
       # After build is complete, try to copy the index.html file of the
       # preferred language to the build_root
