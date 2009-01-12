@@ -176,7 +176,7 @@ module SproutCore
           end
           # now minify and prepend any static
           comments.push "\n" unless comments.empty?
-          comments.push (lines * '')
+          comments.push(lines * '')
           lines = comments
         end
         
