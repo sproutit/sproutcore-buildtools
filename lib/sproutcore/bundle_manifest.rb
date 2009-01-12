@@ -361,7 +361,7 @@ module SproutCore
       # This is only useful in development mode
       ret.use_source_directly = use_source_directly
       if use_source_directly
-        path_parts = [bundle.build_root, language.to_s, '_src', src_path]
+        path_parts = [bundle.build_root, language.to_s, platform.to_s, '_src', src_path]
         ret.build_path = File.join(*(path_parts.compact))
         path_parts[0] = url_root
         ret.url = path_parts.compact.join('/')
@@ -373,14 +373,14 @@ module SproutCore
       #
       # The URL is the url_root + current_language + current_platform + (cache_link)
       else
-        path_parts = [bundle.build_root, language.to_s, 
+        path_parts = [bundle.build_root, language.to_s, platform.to_s, 
            (cache_link || bundle.build_number.to_s), ret.filename]
         ret.build_path = File.join(*path_parts.compact)
         
         path_parts[0] = url_root
         ret.url = path_parts.compact.join('/')
         
-        path_parts[2] = 'current' # create path to "current" build
+        path_parts[3] = 'current' # create path to "current" build
         ret.current_url = path_parts.compact.join('/')
         
       end

@@ -394,13 +394,13 @@ module SproutCore
     def normalize_url(url)
 
       # Parse the URL
-      matched = url.match(/^#{index_root}(\/([^\/\.]+))?(\/([^\/\.]+))?(\/|(\/index\.html))?$/)
+      matched = url.match(/^#{index_root}(\/([^\/\.]+))?(\/([^\/\.]+))?(\/([^\/\.]+))?(\/|(\/index\.html))?$/)
       unless matched.nil?
         matched_language = matched[2] || preferred_language
         matched_platform = matched[4] || preferred_platform
         matched_build_number = matched[6] || 'current'
         url = [index_root, 
-          matched_language, matched_build_number,
+          matched_language, matched_platform, matched_build_number,
           'index.html'] * '/'
       end
 
