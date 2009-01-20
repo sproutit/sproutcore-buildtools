@@ -56,18 +56,18 @@ module SproutCore
       # Join the lines together.  This is one last chance to do some prep of
       # the data (such as minifcation and comment stripping)
       def join(lines)
-        if bundle.minify?
-          options = {
-            :preserveComments => false,
-            :preserveNewlines => false,
-            :preserveSpaces => true,
-            :preserveColors => false,
-            :skipMisc => false
-          }
-          SproutCore::CSSPacker.new.compress(lines.join, options)
-        else
+        # if bundle.minify?
+        #   options = {
+        #     :preserveComments => false,
+        #     :preserveNewlines => false,
+        #     :preserveSpaces => true,
+        #     :preserveColors => false,
+        #     :skipMisc => false
+        #   }
+        #   SproutCore::CSSPacker.new.compress(lines.join, options)
+        # else
           lines.join
-        end
+        # end
       end
 
       # Rewrites any inline content such as static urls.  Subclasseses can
